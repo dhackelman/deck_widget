@@ -15,3 +15,9 @@
   margin: 0 auto; 
   width: 70%; 
 }
+
+#table_and_totals_container{
+    display: flex; 
+    width: 100%; 
+    flex-direction: row;
+}

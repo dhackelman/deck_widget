@@ -86,7 +86,7 @@ var json = [
     "Name": "concrete landing",
     "Desc": "Remove weird concrete steps under landing",
     "Units": 1,
-    "Unit_Cost": "?",
+    "Unit_Cost": 0,
     "DIY": 1,
     "Happening": 1,
     "url": ""
@@ -166,7 +166,7 @@ var json = [
     "Name": "walkway",
     "Desc": "from parking pad to steps - pavers, crush, felt, edging",
     "Units": 32,
-    "Unit_Cost": "?",
+    "Unit_Cost": 0,
     "DIY": 0,
     "Happening": 0,
     "url": ""
@@ -496,7 +496,7 @@ var json = [
     "Name": 444,
     "Desc": "CLEYERA",
     "Units": 3,
-    "Unit_Cost": "",
+    "Unit_Cost": 0,
     "DIY": 0,
     "Happening": 0,
     "url": "https://target.scene7.com/is/image/Target/52685707?wid=488&hei=488&fmt=pjpeg"
@@ -618,8 +618,22 @@ for(i = 0; i < json.length; i++) {
   var cell5 = row.insertCell(); 
   cell5.innerHTML = '<td>'+json[i].Unit_Cost+'</td>';
   var cell6 = row.insertCell(); 
-  cell6.innerHTML = '<label><input type="radio" name="diy_'+i+'" checked/><span>yes</span></label><label><input type="radio" name="diy_'+i+'"/><span>no</span></label>';
+  cell6.innerHTML = '<label class="diy"><input type="radio" name="diy_'+i+'" /><span>yes</span></label><label><input type="radio" name="diy_'+i+'" checked/><span>no</span></label>';
   var cell7 = row.insertCell(); 
-  cell7.innerHTML = '<label><input type="radio" name="happening_'+i+'" checked/><span>yes</span></label><label><input type="radio" name="happening_'+i+'"/><span>no</span></label>';
+  cell7.innerHTML = '<label class="happening"><input type="radio" name="happening_'+i+'" checked/><span>yes</span></label><label><input type="radio" name="happening_'+i+'"/><span>no</span></label>';
+}
+
+var all_rows = document.getElementsByTagName('TR');
+var total_cost = 0; 
+for (var j = 0; j < all_rows.length; j++) {
+    if (all_rows[j].children[6].children[1]) {
+        // console.log(all_rows[j].children[6].children[1].children[0]);
+        if (all_rows[j].children[6].children[1].children[0].checked == true ) {
+                total_cost += parseInt(all_rows[j].children[5].textContent);
+                var numberWithCommas = total_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                var total_cost_int = document.getElementById('total_cost_int'); 
+                total_cost_int.innerHTML= "$"+ numberWithCommas; 
+        }
+    }
 }
 
