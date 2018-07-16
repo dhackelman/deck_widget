@@ -608,7 +608,11 @@ for(i = 0; i < json.length; i++) {
   var cell2 = row.insertCell(); 
   cell2.innerHTML = '<td>' + json[i].Name+'</td>';
   var cell3 = row.insertCell(); 
-  cell3.innerHTML = '<td>'+json[i].Desc+'</td>';
+  if (json[i].url.length > 0){
+      cell3.innerHTML = '<td><a href="'+json[i].url+'">'+json[i].Desc+'</a></td>';
+  } else {
+      cell3.innerHTML = '<td>'+json[i].Desc+'</td>';
+  }
   var cell4 = row.insertCell(); 
   cell4.innerHTML = '<td>'+json[i].Units+'</td>';
   var cell5 = row.insertCell(); 
@@ -618,3 +622,4 @@ for(i = 0; i < json.length; i++) {
   var cell7 = row.insertCell(); 
   cell7.innerHTML = '<label><input type="radio" name="happening_'+i+'" checked/><span>yes</span></label><label><input type="radio" name="happening_'+i+'"/><span>no</span></label>';
 }
+
