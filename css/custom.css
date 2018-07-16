@@ -1,0 +1,17 @@
+#deck_content_container h1 {
+  text-align: center;
+}
+#deck_content_container {
+  margin: 5px auto;
+  width: 95%;
+}
+
+#header_container {
+  display: flex;
+  width: 100t;
+}
+
+#table_container {
+  margin: 0 auto; 
+  width: 70%; 
+}
