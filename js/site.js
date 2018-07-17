@@ -141,7 +141,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "grading",
+      "Category": "grading/paving",
       "Name": "Patio",
       "Desc": "Grading and dirt for new patio area",
       "Units": 8,
@@ -151,7 +151,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "paving",
+      "Category": "grading/paving",
       "Name": "patio stones",
       "Desc": "fossil beige antiqued pavers + felt, border, edging, sand",
       "Units": 240,
@@ -161,7 +161,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "paving",
+      "Category": "grading/paving",
       "Name": "walkway",
       "Desc": "from parking pad to steps - pavers, crush, felt, edging",
       "Units": 32,
@@ -171,7 +171,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "paving",
+      "Category": "grading/paving",
       "Name": "4' steppers",
       "Desc": "southern stone supply",
       "Units": 8,
@@ -181,7 +181,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "paving",
+      "Category": "grading/paving",
       "Name": "under deck work",
       "Desc": "landscape fabric, stones, work space under deck",
       "Units": 150,
@@ -191,7 +191,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "paving",
+      "Category": "grading/paving",
       "Name": "under sun room",
       "Desc": "re-set pavers, gravel, edging",
       "Units": 170,
@@ -201,7 +201,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "paving",
+      "Category": "grading/paving",
       "Name": "crawl space entry",
       "Desc": "pavers, brick, etc.",
       "Units": 16,
@@ -595,6 +595,7 @@ const buildADeck = {
   all_rows: document.getElementsByTagName('TR'),
   total_cost: 0,
   categoryCost: 0,
+  plantsActive: 1, 
 
   appendTableRows() {
     var table_body = document.getElementById('table_body');
@@ -654,18 +655,31 @@ const buildADeck = {
             } 
         }
     }
-    // this.calculateCategoryTotals('prep', 'total_cost_prep');
-    // this.calculateCategoryTotals('demo', 'total_cost_demo');
-    // this.calculateCategoryTotals('paving', 'total_cost_grading', 'grading');
-    // this.calculateCategoryTotals('carpentry', 'total_cost_carpentry');
-    // this.calculateCategoryTotals('drainage', 'total_cost_drain');
-    // this.calculateCategoryTotals('misc', 'total_cost_misc');
-    // this.calculateCategoryTotals('electrical', 'total_cost_elec');
-    // this.calculateCategoryTotals('plants', 'total_cost_plants');
-    // this.calculateCategoryTotals('fence', 'total_cost_fence');
   },
+  calculateKilnWoodTotals (){
+      // rows 22, 25 are yes
+      // rows 23, 24, 25, 26, 27 are no
+      console.log('woodType');
+  }, 
+  calculateCheapWoodTotals (){
+      //rows 23, 26 are yes 
+      //rows 22, 24, 25, 27 are no
+      console.log('woodType');
+  }, 
+  calculateCompositeWoodTotals (){
+      //rows 24, 27 are yes
+      //rows 22, 23, 25, 26 are no 
+      console.log('woodType');
+  }, 
+  addOrRemovePlantTotals (){
+      //rows 45-59
+      console.log('plants');
+  }, 
   button_calc: document.getElementById('button_calc'),
-
+  cheap_wood_calc: document.getElementById('cheap_wood_calc'),
+  kiln_wood_calc: document.getElementById('kiln_wood_calc'),
+  composite_wood_calc: document.getElementById('composite_wood_calc'),
+  toggle_plants: document.getElementById('toggle_plants'),
   init() {
     //create table using json
     this.appendTableRows();
@@ -676,13 +690,29 @@ const buildADeck = {
       this.calculateTotal(); 
       this.calculateCategoryTotals('prep', 'total_cost_prep');
       this.calculateCategoryTotals('demo', 'total_cost_demo');
-      this.calculateCategoryTotals('paving', 'total_cost_grading', 'grading');
+      this.calculateCategoryTotals('grading/paving', 'total_cost_grading', 'grading');
       this.calculateCategoryTotals('carpentry', 'total_cost_carpentry');
       this.calculateCategoryTotals('drainage', 'total_cost_drain');
       this.calculateCategoryTotals('misc', 'total_cost_misc');
       this.calculateCategoryTotals('electrical', 'total_cost_elec');
       this.calculateCategoryTotals('plants', 'total_cost_plants');
       this.calculateCategoryTotals('fence', 'total_cost_fence');
+    });
+    this.cheap_wood_calc.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.calculateCheapWoodTotals(); 
+    });
+    this.kiln_wood_calc.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.calculateKilnWoodTotals(); 
+    });
+    this.composite_wood_calc.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.calculateCompositeWoodTotals(); 
+    });
+    this.toggle_plants.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.addOrRemovePlantTotals(); 
     });
   }
 }
