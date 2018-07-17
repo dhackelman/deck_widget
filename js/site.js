@@ -594,6 +594,7 @@ const buildADeck = {
 
   all_rows: document.getElementsByTagName('TR'),
   total_cost: 0,
+  categoryCost: 0,
 
   appendTableRows() {
     var table_body = document.getElementById('table_body');
@@ -617,22 +618,21 @@ const buildADeck = {
       cell4.innerHTML = '<td>'+this.json[i].Units+'</td>';
       var cell5 = row.insertCell();
       cell5.innerHTML = '<td>'+this.json[i].Unit_Cost+'</td>';
-      // var cell6 = row.insertCell();
-      // cell6.innerHTML = '<label class="diy"><input type="radio" name="diy_'+i+'" /><span>yes</span></label><label><input type="radio" name="diy_'+i+'" checked/><span>no</span></label>';
       var cell7 = row.insertCell();
       cell7.innerHTML = '<label class="happening"><input type="radio" name="happening_'+i+'" checked/><span>yes</span></label><label><input type="radio" name="happening_'+i+'"/><span>no</span></label>';
     }
   },
   calculateCategoryTotals(arg1, arg2, arg3){
-      var categoryCost = 0; 
+      this.categoryCost = 0;
       for (var j = 0; j < this.all_rows.length; j++) {
-          if (this.all_rows[j].children[1].textContent == arg1 || this.all_rows[j].children[1].textContent == arg3) {
+          if (this.all_rows[j].children[1].textContent == arg1) {
               if (this.all_rows[j].children[6].children[1]) {
                   if (this.all_rows[j].children[6].children[0].children[0].checked == true ) {
-                      categoryCost += (parseInt(this.all_rows[j].children[5].textContent) * parseInt(this.all_rows[j].children[4].textContent));
-                      var numberWithCommas = categoryCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                      this.categoryCost += (parseInt(this.all_rows[j].children[5].textContent) * parseInt(this.all_rows[j].children[4].textContent));
+                      var numberWithCommas = this.categoryCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                       var categoryCostSpot = document.getElementById(arg2);
-                      categoryCostSpot.innerHTML= "$"+ numberWithCommas;
+                      // categoryCostSpot.innerHTML= "$"; 
+                      categoryCostSpot.innerHTML = "$" + this.categoryCost;
                   }
               }
           }
@@ -651,15 +651,15 @@ const buildADeck = {
             }
         }
     }
-    this.calculateCategoryTotals('prep', 'total_cost_prep');
-    this.calculateCategoryTotals('demo', 'total_cost_demo');
-    this.calculateCategoryTotals('paving', 'total_cost_grading', 'grading');
-    this.calculateCategoryTotals('carpentry', 'total_cost_carpentry');
-    this.calculateCategoryTotals('drainage', 'total_cost_drain');
-    this.calculateCategoryTotals('misc', 'total_cost_misc');
-    this.calculateCategoryTotals('electrical', 'total_cost_elec');
-    this.calculateCategoryTotals('plants', 'total_cost_plants');
-    this.calculateCategoryTotals('fence', 'total_cost_fence');
+    // this.calculateCategoryTotals('prep', 'total_cost_prep');
+    // this.calculateCategoryTotals('demo', 'total_cost_demo');
+    // this.calculateCategoryTotals('paving', 'total_cost_grading', 'grading');
+    // this.calculateCategoryTotals('carpentry', 'total_cost_carpentry');
+    // this.calculateCategoryTotals('drainage', 'total_cost_drain');
+    // this.calculateCategoryTotals('misc', 'total_cost_misc');
+    // this.calculateCategoryTotals('electrical', 'total_cost_elec');
+    // this.calculateCategoryTotals('plants', 'total_cost_plants');
+    // this.calculateCategoryTotals('fence', 'total_cost_fence');
   },
   button_calc: document.getElementById('button_calc'),
 
@@ -671,6 +671,15 @@ const buildADeck = {
     this.button_calc.addEventListener('click', (event) => {
       event.preventDefault();
       this.calculateTotal(); 
+      this.calculateCategoryTotals('prep', 'total_cost_prep');
+      this.calculateCategoryTotals('demo', 'total_cost_demo');
+      this.calculateCategoryTotals('paving', 'total_cost_grading', 'grading');
+      this.calculateCategoryTotals('carpentry', 'total_cost_carpentry');
+      this.calculateCategoryTotals('drainage', 'total_cost_drain');
+      this.calculateCategoryTotals('misc', 'total_cost_misc');
+      this.calculateCategoryTotals('electrical', 'total_cost_elec');
+      this.calculateCategoryTotals('plants', 'total_cost_plants');
+      this.calculateCategoryTotals('fence', 'total_cost_fence');
     });
   }
 }
