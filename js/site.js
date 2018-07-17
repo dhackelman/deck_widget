@@ -633,6 +633,9 @@ const buildADeck = {
                       var categoryCostSpot = document.getElementById(arg2);
                       // categoryCostSpot.innerHTML= "$"; 
                       categoryCostSpot.innerHTML = "$" + this.categoryCost;
+                  } else {
+                      var categoryCostSpot = document.getElementById(arg2);
+                      categoryCostSpot.innerHTML = "$0";
                   }
               }
           }
@@ -648,7 +651,7 @@ const buildADeck = {
                     var numberWithCommas = this.total_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     var total_cost_int = document.getElementById('total_cost_int');
                     total_cost_int.innerHTML= "$"+ numberWithCommas;
-            }
+            } 
         }
     }
     // this.calculateCategoryTotals('prep', 'total_cost_prep');
