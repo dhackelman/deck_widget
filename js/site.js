@@ -221,7 +221,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "carpentry wood",
+      "Category": "carpentry",
       "Name": "cheap wood",
       "Desc": "salty wood from HD",
       "Units": 168,
@@ -281,7 +281,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "carpentry wood",
+      "Category": "fence",
       "Name": "Fence Gates",
       "Desc": "repair hinges, anti-sag kits",
       "Units": 2,
@@ -291,7 +291,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "stain",
+      "Category": "carpentry",
       "Name": "deck and steps",
       "Desc": "stain and protective coats on deck and steps",
       "Units": 6,
@@ -441,7 +441,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "trees",
+      "Category": "plants",
       "Name": "GINKGO BILOBA",
       "Desc": "MAIDENHAIR TREE",
       "Units": 1,
@@ -451,7 +451,7 @@ const buildADeck = {
       "url": "https://img2.cgtrader.com/items/745602/ff3d96b827/large/ginkgo-tree-ginkgo-biloba-7m-3d-model-max-obj-fbx-c4d-ma-mb.jpg"
     },
     {
-      "Category": "shrubs",
+      "Category": "plants",
       "Name": "HYDRANGEA PANICULATA 'VANILLA STRAWBERRY'",
       "Desc": "PANICLE HYDRANGEA",
       "Units": 4,
@@ -461,7 +461,7 @@ const buildADeck = {
       "url": "http://www.johnson-nursery.com/Images/johnsonnursery/product-images/Hydrangea%20Fire%20Light%203_trcjist0x.jpg"
     },
     {
-      "Category": "shrubs",
+      "Category": "plants",
       "Name": "LOROPETALUM 'CRIMSON FIRE'",
       "Desc": "LOROPETALUM",
       "Units": 11,
@@ -471,7 +471,7 @@ const buildADeck = {
       "url": "https://cdn.shopify.com/s/files/1/0207/5750/products/loropetalum_daruma_large.jpg?v=1521739140"
     },
     {
-      "Category": "shrubs",
+      "Category": "plants",
       "Name": "LOROPETALUM 'DARUMA' DWARF",
       "Desc": "LOROPETALUM",
       "Units": 9,
@@ -481,7 +481,7 @@ const buildADeck = {
       "url": "https://cdn.shopify.com/s/files/1/0207/5750/products/loropetalum_daruma_large.jpg?v=1521739140"
     },
     {
-      "Category": "shrubs",
+      "Category": "plants",
       "Name": "ROSA DRIFT 'NOVAROSPOP'",
       "Desc": "POPCORN DRIFT ROSE",
       "Units": 8,
@@ -491,7 +491,7 @@ const buildADeck = {
       "url": "https://st.hzcdn.com/simgs/fc3205f50532b187_8-5669/home-design.jpg"
     },
     {
-      "Category": "shrubs",
+      "Category": "plants",
       "Name": 444,
       "Desc": "CLEYERA",
       "Units": 3,
@@ -501,7 +501,7 @@ const buildADeck = {
       "url": "https://target.scene7.com/is/image/Target/52685707?wid=488&hei=488&fmt=pjpeg"
     },
     {
-      "Category": "shrubs",
+      "Category": "plants",
       "Name": "THUJA 'TECHNITO'",
       "Desc": "COLUMNAR ARBORVITAE",
       "Units": 1,
@@ -511,7 +511,7 @@ const buildADeck = {
       "url": "https://plants.jimwhitingnursery.com/Plant-Name/_ccLib/image/plantstock/CARD-111619.jpg"
     },
     {
-      "Category": "shrubs",
+      "Category": "plants",
       "Name": "VIBURNUM P. 'KILIMANJARO'",
       "Desc": "KILIMANJARO VIBURNUM",
       "Units": 3,
@@ -521,7 +521,7 @@ const buildADeck = {
       "url": "https://s3.amazonaws.com/finegardening.s3.tauntoncloud.com/app/uploads/2018/01/23174605/041075038-01_xlg.jpg"
     },
     {
-      "Category": "shrubs",
+      "Category": "plants",
       "Name": "VIBURNUM MACR. 'STERILE'",
       "Desc": "CHINESE SNOWBALL",
       "Units": 2,
@@ -531,7 +531,7 @@ const buildADeck = {
       "url": "https://image.shutterstock.com/image-photo/hydrangea-macrophylla-flower-bouquet-flowers-260nw-790666954.jpg"
     },
     {
-      "Category": "vines",
+      "Category": "plants",
       "Name": "HYDRANGEA PETIOLOARIS",
       "Desc": "CLIMBING HYDRANGEA",
       "Units": 3,
@@ -541,7 +541,7 @@ const buildADeck = {
       "url": "https://www.whiteflowerfarm.com/mas_assets/cache/image/6/d/0/1744.Jpg"
     },
     {
-      "Category": "perrenials",
+      "Category": "plants",
       "Name": "ANEMONE HUPEHENSIS 'HONORINE JOBERT'",
       "Desc": "HONORINE JOBERT ANEMONE",
       "Units": 12,
@@ -551,7 +551,7 @@ const buildADeck = {
       "url": "https://www.valesgreenhouse.com/images/PlantofYear2016a.jpg"
     },
     {
-      "Category": "perrenials",
+      "Category": "plants",
       "Name": "EUPATORIUM MACULATUM 'GATEWAY'",
       "Desc": "JOE-PYE WEED",
       "Units": 18,
@@ -561,7 +561,7 @@ const buildADeck = {
       "url": "https://www.ebertsgreenhouse.com/_ccLib/image/plants/DETA-1139.jpg.pagespeed.ce.87-cgDGJFC.jpg"
     },
     {
-      "Category": "perrenials",
+      "Category": "plants",
       "Name": "SALVIA 'MAY NIGHT'",
       "Desc": "MAY NIGHT SAGE",
       "Units": 57,
@@ -571,7 +571,7 @@ const buildADeck = {
       "url": "https://e54055a024bc6fb58d47-f7df714a3b816a175961a96ef2278d84.ssl.cf2.rackcdn.com/13178-May-Night-Salvia.jpg"
     },
     {
-      "Category": "perrenials",
+      "Category": "plants",
       "Name": "STOKESIA 'MARY GREGORY'",
       "Desc": "STOKES ASTER",
       "Units": 57,
@@ -581,7 +581,7 @@ const buildADeck = {
       "url": "https://hgtvhome.sndimg.com/content/dam/images/grdn/fullset/2013/10/3/0/Original_aster-1.JPG.rend.hgtvcom.231.174.suffix/1452647146229.jpeg"
     },
     {
-      "Category": "perrenials",
+      "Category": "plants",
       "Name": "VERBENA BONARIENSIS 'LOLLIPOP'",
       "Desc": "BRAZILIAN VERBENA",
       "Units": 12,
@@ -594,14 +594,6 @@ const buildADeck = {
 
   all_rows: document.getElementsByTagName('TR'),
   total_cost: 0,
-
-  winnerFunction() {
-    console.log('winner');
-  },
-
-  loserFunction() {
-    console.log('loser');
-  },
 
   appendTableRows() {
     var table_body = document.getElementById('table_body');
@@ -625,17 +617,33 @@ const buildADeck = {
       cell4.innerHTML = '<td>'+this.json[i].Units+'</td>';
       var cell5 = row.insertCell();
       cell5.innerHTML = '<td>'+this.json[i].Unit_Cost+'</td>';
-      var cell6 = row.insertCell();
-      cell6.innerHTML = '<label class="diy"><input type="radio" name="diy_'+i+'" /><span>yes</span></label><label><input type="radio" name="diy_'+i+'" checked/><span>no</span></label>';
+      // var cell6 = row.insertCell();
+      // cell6.innerHTML = '<label class="diy"><input type="radio" name="diy_'+i+'" /><span>yes</span></label><label><input type="radio" name="diy_'+i+'" checked/><span>no</span></label>';
       var cell7 = row.insertCell();
       cell7.innerHTML = '<label class="happening"><input type="radio" name="happening_'+i+'" checked/><span>yes</span></label><label><input type="radio" name="happening_'+i+'"/><span>no</span></label>';
     }
   },
+  calculateCategoryTotals(arg1, arg2, arg3){
+      var categoryCost = 0; 
+      for (var j = 0; j < this.all_rows.length; j++) {
+          if (this.all_rows[j].children[1].textContent == arg1 || this.all_rows[j].children[1].textContent == arg3) {
+              if (this.all_rows[j].children[6].children[1]) {
+                  if (this.all_rows[j].children[6].children[0].children[0].checked == true ) {
+                      categoryCost += (parseInt(this.all_rows[j].children[5].textContent) * parseInt(this.all_rows[j].children[4].textContent));
+                      var numberWithCommas = categoryCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                      var categoryCostSpot = document.getElementById(arg2);
+                      categoryCostSpot.innerHTML= "$"+ numberWithCommas;
+                  }
+              }
+          }
+      }
+  }, 
   calculateTotal() {
+      this.total_cost = 0; 
     for (var j = 0; j < this.all_rows.length; j++) {
         if (this.all_rows[j].children[6].children[1]) {
             // console.log(all_rows[j].children[6].children[1].children[0]);
-            if (this.all_rows[j].children[6].children[1].children[0].checked == true ) {
+            if (this.all_rows[j].children[6].children[0].children[0].checked == true ) {
                     this.total_cost += (parseInt(this.all_rows[j].children[5].textContent) * parseInt(this.all_rows[j].children[4].textContent));
                     var numberWithCommas = this.total_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     var total_cost_int = document.getElementById('total_cost_int');
@@ -643,6 +651,15 @@ const buildADeck = {
             }
         }
     }
+    this.calculateCategoryTotals('prep', 'total_cost_prep');
+    this.calculateCategoryTotals('demo', 'total_cost_demo');
+    this.calculateCategoryTotals('paving', 'total_cost_grading', 'grading');
+    this.calculateCategoryTotals('carpentry', 'total_cost_carpentry');
+    this.calculateCategoryTotals('drainage', 'total_cost_drain');
+    this.calculateCategoryTotals('misc', 'total_cost_misc');
+    this.calculateCategoryTotals('electrical', 'total_cost_elec');
+    this.calculateCategoryTotals('plants', 'total_cost_plants');
+    this.calculateCategoryTotals('fence', 'total_cost_fence');
   },
   button_calc: document.getElementById('button_calc'),
 
@@ -651,7 +668,7 @@ const buildADeck = {
     this.appendTableRows();
     this.calculateTotal();
     //run eventListener
-    this.button_calc.addEventListener('click', () => {
+    this.button_calc.addEventListener('click', (event) => {
       event.preventDefault();
       this.calculateTotal(); 
     });
