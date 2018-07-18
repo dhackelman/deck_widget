@@ -667,17 +667,24 @@ const buildADeck = {
       //rows 22, 23, 25, 26 are no 
       console.log('woodType');
   }, 
-  addOrRemovePlantTotals (){
+  addOrRemovePlantTotals (){ 
       //rows 45-59
       if (this.plantsActive == 1) {
-          console.log('plants being removed');
+          for (var j = 44; j < this.all_rows.length; j++) {
+              // console.log(this.all_rows[j].children[6].children[1].children[0]);
+              this.all_rows[j].children[6].children[1].children[0].checked = true;
+          }
           this.plantsActive = 0; 
-          //calculate totals with plants removed
       } else {
-          console.log('plants being added');
+          for (var j = 44; j < this.all_rows.length; j++) {
+              // console.log(this.all_rows[j].children[6].children[1].children[0]);
+              this.all_rows[j].children[6].children[0].children[0].checked = true;
+          }
           this.plantsActive = 1; 
       }
-      //calculate totals with plants added
+      //calculate totals with plants added / removed
+      this.calculateTotal(); 
+      this.calculateCategoryTotals('plants', 'total_cost_plants');
   }, 
   button_calc: document.getElementById('button_calc'),
   cheap_wood_calc: document.getElementById('cheap_wood_calc'),
