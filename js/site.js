@@ -630,14 +630,10 @@ const buildADeck = {
               if (this.all_rows[j].children[6].children[1]) {
                   if (this.all_rows[j].children[6].children[0].children[0].checked == true ) {
                       this.categoryCost += (parseInt(this.all_rows[j].children[5].textContent) * parseInt(this.all_rows[j].children[4].textContent));
-                      var numberWithCommas = this.categoryCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                      var categoryCostSpot = document.getElementById(arg2);
-                      // categoryCostSpot.innerHTML= "$"; 
-                      categoryCostSpot.innerHTML = "$" + this.categoryCost;
-                  } else {
-                      var categoryCostSpot = document.getElementById(arg2);
-                      categoryCostSpot.innerHTML = "$0";
                   }
+                  var numberWithCommas = this.categoryCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                  var categoryCostSpot = document.getElementById(arg2);
+                  categoryCostSpot.innerHTML = "$" + this.categoryCost;
               }
           }
       }
