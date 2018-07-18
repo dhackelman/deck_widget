@@ -673,7 +673,15 @@ const buildADeck = {
   }, 
   addOrRemovePlantTotals (){
       //rows 45-59
-      console.log('plants');
+      if (this.plantsActive == 1) {
+          console.log('plants being removed');
+          this.plantsActive = 0; 
+          //calculate totals with plants removed
+      } else {
+          console.log('plants being added');
+          this.plantsActive = 1; 
+      }
+      //calculate totals with plants added
   }, 
   button_calc: document.getElementById('button_calc'),
   cheap_wood_calc: document.getElementById('cheap_wood_calc'),

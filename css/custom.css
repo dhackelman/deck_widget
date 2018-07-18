@@ -29,3 +29,6 @@
 #button_container button {
     margin: auto 5px; 
 }
+#totals {
+    padding-left: 100px; 
+}
