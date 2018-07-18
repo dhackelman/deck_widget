@@ -601,6 +601,7 @@ const buildADeck = {
   cheap: 0, 
   drewDoesDemo: 1,
   gradeAndPave:  1,
+  electrical: 1, 
   appendTableRows() {
     var table_body = document.getElementById('table_body');
 
@@ -765,6 +766,22 @@ const buildADeck = {
       this.calculateTotal(); 
       this.calculateCategoryTotals('grading/paving', 'total_cost_grading');
   },
+  toggleElectric() {
+      if (this.electrical == 1) {
+          for (var j =35; j < 40; j++) {
+              this.all_rows[j].children[6].children[1].children[0].checked = true;
+          }
+          this.electrical = 0; 
+      } else {
+          for (var j = 35; j < 40; j++) {
+              this.all_rows[j].children[6].children[0].children[0].checked = true;
+          }
+          this.electrical = 1; 
+          
+      }
+      this.calculateTotal(); 
+      this.calculateCategoryTotals('electrical', 'total_cost_elec');
+  }, 
   addOrRemovePlantTotals (){ 
       //rows 45-59
       if (this.plantsActive == 1) {
@@ -792,6 +809,7 @@ const buildADeck = {
   toggle_plants: document.getElementById('toggle_plants'),
   drew_demo: document.getElementById('drew_demo'),
   no_major_grade_pave: document.getElementById('no_major_grade_pave'),
+  toggle_electric: document.getElementById('toggle_electric'),
   init() {
     //create table using json
     this.appendTableRows();
@@ -844,6 +862,11 @@ const buildADeck = {
       event.preventDefault();
       this.toggleGradePave(); 
       this.no_major_grade_pave.classList.toggle('button-primary'); 
+    });
+    this.toggle_electric.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.toggleElectric(); 
+      this.toggle_electric.classList.toggle('button-primary'); 
     });
   }
 }
