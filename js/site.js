@@ -231,7 +231,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "capentry",
+      "Category": "carpentry",
       "Name": "composite wood",
       "Desc": "Azek composite (banded with inset)",
       "Units": 168,
@@ -596,7 +596,9 @@ const buildADeck = {
   total_cost: 0,
   categoryCost: 0,
   plantsActive: 1, 
-
+  composite: 0, 
+  kiln: 0, 
+  cheap: 0, 
   appendTableRows() {
     var table_body = document.getElementById('table_body');
 
@@ -629,17 +631,37 @@ const buildADeck = {
           if (this.all_rows[j].children[1].textContent == arg1) {
               if (this.all_rows[j].children[6].children[1]) {
                   if (this.all_rows[j].children[6].children[0].children[0].checked == true ) {
+                      if (arg1 == 'carpentry') {
+                          console.log("Units:" + parseInt(this.all_rows[j].children[4].textContent));
+                          console.log("UnitCost:" + parseInt(this.all_rows[j].children[5].textContent));
+                      }
                       this.categoryCost += (parseInt(this.all_rows[j].children[5].textContent) * parseInt(this.all_rows[j].children[4].textContent));
                   }
-                  var numberWithCommas = this.categoryCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                  var categoryCostSpot = document.getElementById(arg2);
-                  categoryCostSpot.innerHTML = "$" + this.categoryCost;
               }
           }
       }
+      if (arg1 == 'carpentry') {
+          console.log("Total:" + parseInt(this.categoryCost));
+      }
+      var numberWithCommas = this.categoryCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      var categoryCostSpot = document.getElementById(arg2);
+      categoryCostSpot.innerHTML = "$" + this.categoryCost;
+      
   }, 
+  resetAllCarpentry(){
+      for (var j = 22; j < 28; j++){
+          this.all_rows[j].children[6].children[1].children[0].checked = true;  
+      }
+  },
   calculateTotal() {
-      this.total_cost = 0; 
+      this.total_cost = 0;
+      this.resetAllCarpentry();  
+      if (this.composite == 0 && this.cheap == 0 && this.kiln == 0) {
+          this.cheap = 1; 
+      }
+      this.calculateCompositeWoodTotals();
+      this.calculateCheapWoodTotals(); 
+      this.calculateKilnWoodTotals(); 
     for (var j = 0; j < this.all_rows.length; j++) {
         if (this.all_rows[j].children[6].children[1]) {
             // console.log(all_rows[j].children[6].children[1].children[0]);
@@ -651,36 +673,85 @@ const buildADeck = {
             } 
         }
     }
+    this.calculateCategoryTotals('prep', 'total_cost_prep');
+    this.calculateCategoryTotals('demo', 'total_cost_demo');
+    this.calculateCategoryTotals('grading/paving', 'total_cost_grading', 'grading');
+    this.calculateCategoryTotals('drainage', 'total_cost_drain');
+    this.calculateCategoryTotals('misc', 'total_cost_misc');
+    this.calculateCategoryTotals('electrical', 'total_cost_elec');
+    this.calculateCategoryTotals('plants', 'total_cost_plants');
+    this.calculateCategoryTotals('fence', 'total_cost_fence');
+    this.calculateCategoryTotals('carpentry', 'total_cost_carpentry');
   },
   calculateKilnWoodTotals (){
-      // rows 22, 25 are yes
-      // rows 23, 24, 25, 26, 27 are no
-      console.log('woodType');
+      if (this.kiln == 1) {
+          // rows 22, 25 are yes
+          this.all_rows[22].children[6].children[0].children[0].checked = true;
+          this.all_rows[25].children[6].children[0].children[0].checked = true;
+          this.kiln_wood_calc.classList.add('button-primary')
+          // rows 23, 24, 26, 27 are no
+          this.all_rows[23].children[6].children[1].children[0].checked = true;
+          this.all_rows[24].children[6].children[1].children[0].checked = true;
+          this.all_rows[26].children[6].children[1].children[0].checked = true;
+          this.all_rows[27].children[6].children[1].children[0].checked = true;
+          this.kiln = 0;
+          this.cheap_wood_calc.classList.remove('button-primary')
+          this.cheap = 0;
+          this.composite_wood_calc.classList.remove('button-primary')
+          this.composite = 0; 
+      }
   }, 
   calculateCheapWoodTotals (){
-      //rows 23, 26 are yes 
-      //rows 22, 24, 25, 27 are no
-      console.log('woodType');
+      if (this.cheap == 1) {
+          //rows 23, 26 are yes 
+          this.all_rows[23].children[6].children[0].children[0].checked = true;
+          this.all_rows[26].children[6].children[0].children[0].checked = true;
+          this.cheap_wood_calc.classList.add('button-primary')
+          //rows 22, 24, 25, 27 are no
+          this.all_rows[22].children[6].children[1].children[0].checked = true;
+          this.all_rows[24].children[6].children[1].children[0].checked = true;
+          this.all_rows[25].children[6].children[1].children[0].checked = true;
+          this.all_rows[27].children[6].children[1].children[0].checked = true;
+          this.kiln = 0;
+          this.kiln_wood_calc.classList.remove('button-primary')
+          this.cheap = 0;
+          this.composite_wood_calc.classList.remove('button-primary')
+          this.composite = 0; 
+      }
   }, 
   calculateCompositeWoodTotals (){
-      //rows 24, 27 are yes
-      //rows 22, 23, 25, 26 are no 
-      console.log('woodType');
+      if (this.composite == 1) {
+          //rows 24, 27 are yes
+          this.all_rows[24].children[6].children[0].children[0].checked = true;
+          this.all_rows[27].children[6].children[0].children[0].checked = true;
+          this.composite_wood_calc.classList.add('button-primary')
+          //rows 22, 23, 25, 26 are no 
+          this.all_rows[22].children[6].children[1].children[0].checked = true;
+          this.all_rows[23].children[6].children[1].children[0].checked = true;
+          this.all_rows[25].children[6].children[1].children[0].checked = true;
+          this.all_rows[26].children[6].children[1].children[0].checked = true;
+          this.kiln = 0;
+          this.kiln_wood_calc.classList.remove('button-primary')
+          this.cheap = 0;
+          this.cheap_wood_calc.classList.remove('button-primary')
+          this.composite = 0; 
+      }
   }, 
   addOrRemovePlantTotals (){ 
       //rows 45-59
       if (this.plantsActive == 1) {
-          for (var j = 44; j < this.all_rows.length; j++) {
+          for (var j = 45; j < this.all_rows.length; j++) {
               // console.log(this.all_rows[j].children[6].children[1].children[0]);
               this.all_rows[j].children[6].children[1].children[0].checked = true;
           }
           this.plantsActive = 0; 
       } else {
-          for (var j = 44; j < this.all_rows.length; j++) {
+          for (var j = 45; j < this.all_rows.length; j++) {
               // console.log(this.all_rows[j].children[6].children[1].children[0]);
               this.all_rows[j].children[6].children[0].children[0].checked = true;
           }
           this.plantsActive = 1; 
+          
       }
       //calculate totals with plants added / removed
       this.calculateTotal(); 
@@ -694,36 +765,45 @@ const buildADeck = {
   init() {
     //create table using json
     this.appendTableRows();
-    this.calculateTotal();
     //run eventListener
     this.button_calc.addEventListener('click', (event) => {
       event.preventDefault();
       this.calculateTotal(); 
-      this.calculateCategoryTotals('prep', 'total_cost_prep');
-      this.calculateCategoryTotals('demo', 'total_cost_demo');
-      this.calculateCategoryTotals('grading/paving', 'total_cost_grading', 'grading');
-      this.calculateCategoryTotals('carpentry', 'total_cost_carpentry');
-      this.calculateCategoryTotals('drainage', 'total_cost_drain');
-      this.calculateCategoryTotals('misc', 'total_cost_misc');
-      this.calculateCategoryTotals('electrical', 'total_cost_elec');
-      this.calculateCategoryTotals('plants', 'total_cost_plants');
-      this.calculateCategoryTotals('fence', 'total_cost_fence');
     });
     this.cheap_wood_calc.addEventListener('click', (event) => {
       event.preventDefault();
-      this.calculateCheapWoodTotals(); 
+      if (this.cheap == 1) {
+          this.calculateTotal(); 
+          this.cheap = 0; 
+      } else {
+          this.cheap = 1; 
+          this.calculateTotal(); 
+      } 
     });
     this.kiln_wood_calc.addEventListener('click', (event) => {
       event.preventDefault();
-      this.calculateKilnWoodTotals(); 
+      if (this.kiln == 1) {
+          this.calculateTotal(); 
+          this.kiln = 0; 
+      } else {
+          this.kiln = 1; 
+          this.calculateTotal(); 
+      }
     });
     this.composite_wood_calc.addEventListener('click', (event) => {
       event.preventDefault();
-      this.calculateCompositeWoodTotals(); 
+      if (this.composite == 1) {
+          this.calculateTotal(); 
+          this.composite = 0; 
+      } else {
+          this.composite = 1; 
+          this.calculateTotal(); 
+      }
     });
     this.toggle_plants.addEventListener('click', (event) => {
       event.preventDefault();
       this.addOrRemovePlantTotals(); 
+      this.toggle_plants.classList.toggle('button-primary'); 
     });
   }
 }

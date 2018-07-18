@@ -32,3 +32,6 @@
 #totals {
     padding-left: 100px; 
 }
+#fixed_totals{
+    position: fixed; 
+}
