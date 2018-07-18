@@ -131,7 +131,7 @@ const buildADeck = {
       "url": ""
     },
     {
-      "Category": "grading",
+      "Category": "grading/paving",
       "Name": "Fill Dirt",
       "Desc": "Fill dirt for new lawn to cover most of yard",
       "Units": 20,
@@ -599,6 +599,8 @@ const buildADeck = {
   composite: 0, 
   kiln: 0, 
   cheap: 0, 
+  drewDoesDemo: 1,
+  gradeAndPave:  1,
   appendTableRows() {
     var table_body = document.getElementById('table_body');
 
@@ -631,17 +633,10 @@ const buildADeck = {
           if (this.all_rows[j].children[1].textContent == arg1) {
               if (this.all_rows[j].children[6].children[1]) {
                   if (this.all_rows[j].children[6].children[0].children[0].checked == true ) {
-                      if (arg1 == 'carpentry') {
-                          console.log("Units:" + parseInt(this.all_rows[j].children[4].textContent));
-                          console.log("UnitCost:" + parseInt(this.all_rows[j].children[5].textContent));
-                      }
                       this.categoryCost += (parseInt(this.all_rows[j].children[5].textContent) * parseInt(this.all_rows[j].children[4].textContent));
                   }
               }
           }
-      }
-      if (arg1 == 'carpentry') {
-          console.log("Total:" + parseInt(this.categoryCost));
       }
       var numberWithCommas = this.categoryCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       var categoryCostSpot = document.getElementById(arg2);
@@ -737,6 +732,39 @@ const buildADeck = {
           this.composite = 0; 
       }
   }, 
+  toggleDemoCosts() {
+      if (this.drewDoesDemo == 1) {
+          for (var j = 8; j < 14; j++) {
+              this.all_rows[j].children[6].children[1].children[0].checked = true;
+          }
+          this.drewDoesDemo = 0; 
+      } else {
+          for (var j = 8; j < 14; j++) {
+              this.all_rows[j].children[6].children[0].children[0].checked = true;
+          }
+          this.drewDoesDemo = 1; 
+          
+      }
+      this.calculateTotal(); 
+      this.calculateCategoryTotals('demo', 'total_cost_demo');
+  }, 
+  toggleGradePave() {
+      if (this.gradeAndPave == 1) {
+          for (var j = 14; j < 22; j++) {
+              this.all_rows[j].children[6].children[1].children[0].checked = true;
+          }
+          this.gradeAndPave = 0; 
+      } else {
+          for (var j = 14; j < 22; j++) {
+              this.all_rows[j].children[6].children[0].children[0].checked = true;
+          }
+          this.gradeAndPave = 1; 
+          
+      }
+      this.all_rows[19].children[6].children[0].children[0].checked = true;
+      this.calculateTotal(); 
+      this.calculateCategoryTotals('grading/paving', 'total_cost_grading');
+  },
   addOrRemovePlantTotals (){ 
       //rows 45-59
       if (this.plantsActive == 1) {
@@ -762,6 +790,8 @@ const buildADeck = {
   kiln_wood_calc: document.getElementById('kiln_wood_calc'),
   composite_wood_calc: document.getElementById('composite_wood_calc'),
   toggle_plants: document.getElementById('toggle_plants'),
+  drew_demo: document.getElementById('drew_demo'),
+  no_major_grade_pave: document.getElementById('no_major_grade_pave'),
   init() {
     //create table using json
     this.appendTableRows();
@@ -804,6 +834,16 @@ const buildADeck = {
       event.preventDefault();
       this.addOrRemovePlantTotals(); 
       this.toggle_plants.classList.toggle('button-primary'); 
+    });
+    this.drew_demo.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.toggleDemoCosts(); 
+      this.drew_demo.classList.toggle('button-primary'); 
+    });
+    this.no_major_grade_pave.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.toggleGradePave(); 
+      this.no_major_grade_pave.classList.toggle('button-primary'); 
     });
   }
 }
