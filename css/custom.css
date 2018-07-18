@@ -9,36 +9,47 @@
     background: rgba(255, 255, 255, 1);
     margin-bottom: 0; 
     padding-bottom: 20px; 
+    min-height: 180px;
   position: fixed;
   text-align: center;
-  width: 100%
+  width: 100%; 
+  
 }
 
 #table_and_totals_container{
     display: flex; 
     flex-direction: row;
     justify-content: center; 
-    margin-top: 120px; 
+    margin-top: 200px; 
     width: 100%; 
     z-index: 5; 
 }
 #button_container {
     display: flex; 
+    /* flex-direction: column; */
     justify-content: center; 
     /* padding-bottom: 50px;    */
+    width: 100%: 
 }
 #button_container button {
     margin: auto 5px; 
+    max-width: 170px; 
 }
 #totals {
     padding-left: 100px; 
 }
 #fixed_totals{
-    margin-top: 75px; 
+    /* margin-top: 25px;  */
     position: fixed; 
 }
-#fixed_buttons {
+#fixed_buttons, #fixed_buttons_2 {
     background: rgba(255, 255, 255, 1);
     margin-top: 80px;
     position: fixed;
+}
+#fixed_buttons_2{
+    margin-top: 130px;
+}
+#total_cost_int{
+    font-weight: 500; 
 }

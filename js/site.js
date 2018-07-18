@@ -593,6 +593,7 @@ const buildADeck = {
   ],
 
   all_rows: document.getElementsByTagName('TR'),
+  total_cost_int: document.getElementById('total_cost_int'), 
   total_cost: 0,
   categoryCost: 0,
   plantsActive: 1, 
@@ -602,6 +603,8 @@ const buildADeck = {
   drewDoesDemo: 1,
   gradeAndPave:  1,
   electrical: 1, 
+  misc: 1, 
+  
   appendTableRows() {
     var table_body = document.getElementById('table_body');
 
@@ -664,8 +667,7 @@ const buildADeck = {
             if (this.all_rows[j].children[6].children[0].children[0].checked == true ) {
                     this.total_cost += (parseInt(this.all_rows[j].children[5].textContent) * parseInt(this.all_rows[j].children[4].textContent));
                     var numberWithCommas = this.total_cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                    var total_cost_int = document.getElementById('total_cost_int');
-                    total_cost_int.innerHTML= "$"+ numberWithCommas;
+                    this.total_cost_int.innerHTML= "Total Cost: $"+ numberWithCommas;
             } 
         }
     }
@@ -782,6 +784,22 @@ const buildADeck = {
       this.calculateTotal(); 
       this.calculateCategoryTotals('electrical', 'total_cost_elec');
   }, 
+  toggleMisc() {
+      if (this.misc == 1) {
+          for (var j =40; j < 45; j++) {
+              this.all_rows[j].children[6].children[1].children[0].checked = true;
+          }
+          this.misc = 0; 
+      } else {
+          for (var j = 40; j < 45; j++) {
+              this.all_rows[j].children[6].children[0].children[0].checked = true;
+          }
+          this.misc = 1; 
+          
+      }
+      this.calculateTotal(); 
+      this.calculateCategoryTotals('misc', 'total_cost_misc');
+  }, 
   addOrRemovePlantTotals (){ 
       //rows 45-59
       if (this.plantsActive == 1) {
@@ -810,9 +828,11 @@ const buildADeck = {
   drew_demo: document.getElementById('drew_demo'),
   no_major_grade_pave: document.getElementById('no_major_grade_pave'),
   toggle_electric: document.getElementById('toggle_electric'),
+  toggle_misc: document.getElementById('toggle_misc'),
   init() {
     //create table using json
     this.appendTableRows();
+    this.total_cost_int.innerHTML= "Total Cost: $_____";
     //run eventListener
     this.button_calc.addEventListener('click', (event) => {
       event.preventDefault();
@@ -867,6 +887,11 @@ const buildADeck = {
       event.preventDefault();
       this.toggleElectric(); 
       this.toggle_electric.classList.toggle('button-primary'); 
+    });
+    this.toggle_misc.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.toggleMisc(); 
+      this.toggle_misc.classList.toggle('button-primary'); 
     });
   }
 }
